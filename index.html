@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EN PLENITUD - Especialistas en Adicciones</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: Arial, sans-serif; 
+            background: #f0f8ff;
+            max-width: 100%;
+            overflow-x: hidden;
+            padding-bottom: 20px;
+        }
+        
+        .header {
+            background: #1e40af;
+            padding: 30px 20px;
+            text-align: center;
+            color: white;
+        }
+        
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+        
+        .tagline {
+            font-size: 14px;
+            opacity: 0.8;
+            font-style: italic;
+        }
+        
+        .card {
+            background: white;
+            margin: 15px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .quote-card {
+            background: #3b82f6;
+            margin: 15px;
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #1e40af;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .button {
+            background: #2563eb;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 10px;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            display: block;
+            border: none;
+            width: 100%;
+            font-size: 16px;
+        }
+        
+        .whatsapp {
+            background: #22c55e;
+        }
+        
+        .address {
+            text-align: center;
+            color: #4b5563;
+            margin-bottom: 5px;
+            line-height: 1.5;
+        }
+        
+        .motto {
+            text-align: center;
+            color: #6b7280;
+            font-style: italic;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        
+        .list-item {
+            margin-bottom: 8px;
+            padding: 8px 0;
+            border-bottom: 1px solid #f3f4f6;
+        }
+        
+        .tab-container {
+            display: flex;
+            background: #1e40af;
+            overflow-x: auto;
+            padding: 0 10px;
+        }
+        
+        .tab {
+            padding: 12px 16px;
+            color: white;
+            text-decoration: none;
+            white-space: nowrap;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .tab.active {
+            border-bottom-color: white;
+            font-weight: bold;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="title">ESPECIALISTAS EN TRATAMIENTO DE ADICCIONES</div>
+        <div class="subtitle">🏥 EN PLENITUD</div>
+        <div class="tagline">Centro de Rehabilitación Especializado</div>
+    </div>
+
+    <!-- Pestañas de Navegación -->
+    <div class="tab-container">
+        <a href="#inicio" class="tab active" onclick="showTab('inicio')">Inicio</a>
+        <a href="#especialidades" class="tab" onclick="showTab('especialidades')">Especialidades</a>
+        <a href="#tratamientos" class="tab" onclick="showTab('tratamientos')">Tratamientos</a>
+        <a href="#contacto" class="tab" onclick="showTab('contacto')">Contacto</a>
+    </div>
+
+    <!-- Pestaña INICIO -->
+    <div id="inicio" class="tab-content active">
+        <div class="quote-card">
+            "La recuperación es un camino de valentía, no de perfección"
+        </div>
+
+        <div class="card">
+            <div class="card-title">📞 EMERGENCIAS 24/7</div>
+            
+            <a href="tel:2721384183" class="button">
+                📞 Llamar: 272-138-4183
+            </a>
+
+            <a href="tel:2285125647" class="button">
+                📞 Llamar: 228-512-5647
+            </a>
+
+            <a href="https://wa.me/522721384183" class="button whatsapp">
+                💬 WhatsApp: 272-138-4183
+            </a>
+        </div>
+
+        <div class="card">
+            <div class="card-title">📍 UBICACIÓN</div>
+            <div class="address">Privada Piedad Perez Ortiz #4, Colonia Ejidal</div>
+            <div class="address">Mariano Escobedo, Orizaba, Veracruz</div>
+            <div class="motto">"Expertos en tratamiento especializado de adicciones"</div>
+        </div>
+    </div>
+
+    <!-- Pestaña ESPECIALIDADES -->
+    <div id="especialidades" class="tab-content">
+        <div class="card">
+            <div class="card-title">🎯 NUESTRAS ESPECIALIDADES</div>
+            <div class="list-item">✅ Alcoholismo</div>
+            <div class="list-item">✅ Drogodependencia</div>
+            <div class="list-item">✅ Adicción a Sustancias</div>
+            <div class="list-item">✅ Trastornos Duales</div>
+            <div class="list-item">✅ Adicciones Conductuales</div>
+            <div class="list-item">✅ Intervención en Crisis</div>
+            <div class="list-item">✅ Rehabilitación Integral</div>
+            <div class="list-item">✅ Reinserción Social</div>
+        </div>
+    </div>
+
+    <!-- Pestaña TRATAMIENTOS -->
+    <div id="tratamientos" class="tab-content">
+        <div class="card">
+            <div class="card-title">🏥 TRATAMIENTOS ESPECIALIZADOS</div>
+            <div class="list-item">🩺 Evaluación Médica Integral</div>
+            <div class="list-item">🧠 Terapia Psicológica Individual</div>
+            <div class="list-item">👥 Terapia Grupal Especializada</div>
+            <div class="list-item">💊 Manejo Farmacológico</div>
+            <div class="list-item">🌿 Medicina Integrativa</div>
+            <div class="list-item">🏋️ Terapia Ocupacional</div>
+            <div class="list-item">👨‍👩‍👧‍👦 Terapia Familiar Sistémica</div>
+            <div class="list-item">📋 Plan Personalizado de Recuperación</div>
+        </div>
+    </div>
+
+    <!-- Pestaña CONTACTO -->
+    <div id="contacto" class="tab-content">
+        <div class="card">
+            <div class="card-title">📞 CONTACTO INMEDIATO</div>
+            
+            <a href="tel:2721384183" class="button">
+                📞 Llamada Urgente: 272-138-4183
+            </a>
+
+            <a href="tel:2285125647" class="button">
+                📞 Consultas: 228-512-5647
+            </a>
+
+            <a href="https://wa.me/522721384183" class="button whatsapp">
+                💬 WhatsApp Urgente: 272-138-4183
+            </a>
+            
+            <div style="text-align: center; margin-top: 15px; color: #6b7280; font-size: 14px;">
+                Atención 24 horas los 7 días de la semana
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">🏥 CENTRO ESPECIALIZADO</div>
+            <div class="address">En Plenitud - Especialistas en Adicciones</div>
+            <div class="address">Privada Piedad Perez Ortiz #4</div>
+            <div class="address">Colonia Ejidal, Mariano Escobedo</div>
+            <div class="address">Orizaba, Veracruz, México</div>
+            <div class="motto">"Tu recuperación es nuestra especialidad"</div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.getElementById(tabName).classList.add('active');
+            
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>

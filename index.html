@@ -3,256 +3,491 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EN PLENITUD - Especialistas en Adicciones</title>
+    <title>EN PLENITUD - Centro de Rehabilitación</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: Arial, sans-serif; 
-            background: #f0f8ff;
-            max-width: 100%;
-            overflow-x: hidden;
-            padding-bottom: 20px;
+        /* Estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f9ff;
+        }
+        
+        /* Encabezado */
         .header {
-            background: #1e40af;
-            padding: 30px 20px;
-            text-align: center;
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
             color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
         
-        .title {
-            font-size: 24px;
+        .logo {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .site-title {
+            font-size: 2.2rem;
             font-weight: bold;
-            margin-bottom: 5px;
+            margin-bottom: 0.5rem;
         }
         
-        .subtitle {
-            font-size: 16px;
+        .site-subtitle {
+            font-size: 1.3rem;
             opacity: 0.9;
-            margin-bottom: 5px;
+            margin-bottom: 0.5rem;
         }
         
         .tagline {
-            font-size: 14px;
-            opacity: 0.8;
             font-style: italic;
+            opacity: 0.8;
         }
         
-        .card {
-            background: white;
-            margin: 15px;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        /* Navegación */
+        .nav {
+            background: #1e3a8a;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         
-        .quote-card {
-            background: #3b82f6;
-            margin: 15px;
-            padding: 20px;
-            border-radius: 10px;
+        .nav-list {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-link {
             color: white;
-            text-align: center;
-            font-weight: bold;
-        }
-        
-        .card-title {
-            font-size: 18px;
-            font-weight: bold;
-            color: #1e40af;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        
-        .button {
-            background: #2563eb;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            margin-bottom: 10px;
-            color: white;
-            font-weight: bold;
             text-decoration: none;
-            display: block;
-            border: none;
-            width: 100%;
-            font-size: 16px;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s;
         }
         
-        .whatsapp {
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        /* Contenido principal */
+        .main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        .section {
+            background: white;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+        }
+        
+        .section-title {
+            color: #1e40af;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            border-bottom: 3px solid #3b82f6;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        /* Lista de servicios */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .service-card {
+            background: #f0f7ff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #3b82f6;
+            transition: all 0.3s;
+        }
+        
+        .service-card:hover {
+            background: #e1f0ff;
+            transform: translateX(5px);
+        }
+        
+        .service-icon {
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .service-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #1e40af;
+        }
+        
+        /* Información de contacto de emergencia */
+        .emergency-contact {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .emergency-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+        
+        /* Botones */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #2563eb;
+            color: white;
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-whatsapp {
             background: #22c55e;
         }
         
-        .address {
-            text-align: center;
-            color: #4b5563;
-            margin-bottom: 5px;
-            line-height: 1.5;
+        .btn-whatsapp:hover {
+            background: #16a34a;
         }
         
-        .motto {
-            text-align: center;
-            color: #6b7280;
-            font-style: italic;
-            margin-top: 10px;
-            font-size: 14px;
+        .btn-phone {
+            background: #3b82f6;
         }
         
-        .list-item {
-            margin-bottom: 8px;
-            padding: 8px 0;
-            border-bottom: 1px solid #f3f4f6;
+        .btn-phone:hover {
+            background: #2563eb;
         }
         
-        .tab-container {
-            display: flex;
-            background: #1e40af;
-            overflow-x: auto;
-            padding: 0 10px;
+        .btn-location {
+            background: #8b5cf6;
         }
         
-        .tab {
-            padding: 12px 16px;
+        .btn-location:hover {
+            background: #7c3aed;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #1e293b;
             color: white;
-            text-decoration: none;
-            white-space: nowrap;
-            border-bottom: 3px solid transparent;
+            padding: 3rem 1rem 2rem;
+            margin-top: 3rem;
         }
         
-        .tab.active {
-            border-bottom-color: white;
-            font-weight: bold;
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
         }
         
-        .tab-content {
-            display: none;
+        .footer-section h3 {
+            color: #93c5fd;
+            margin-bottom: 1.2rem;
+            font-size: 1.3rem;
         }
         
-        .tab-content.active {
+        .footer-section p, .footer-section a {
+            color: #cbd5e1;
+            margin-bottom: 0.8rem;
             display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-list {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+            
+            .site-title {
+                font-size: 1.8rem;
+            }
+            
+            .section {
+                padding: 1.8rem;
+            }
+            
+            .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+        
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <div class="title">ESPECIALISTAS EN TRATAMIENTO DE ADICCIONES</div>
-        <div class="subtitle">🏥 EN PLENITUD</div>
-        <div class="tagline">Centro de Rehabilitación Especializado</div>
-    </div>
+    <!-- Encabezado -->
+    <header class="header">
+        <div class="logo">🏥</div>
+        <h1 class="site-title">EN PLENITUD</h1>
+        <p class="site-subtitle">Centro de Rehabilitación Especializado</p>
+        <p class="tagline">Transformando vidas, restaurando esperanzas</p>
+    </header>
 
-    <!-- Pestañas de Navegación -->
-    <div class="tab-container">
-        <a href="#inicio" class="tab active" onclick="showTab('inicio')">Inicio</a>
-        <a href="#especialidades" class="tab" onclick="showTab('especialidades')">Especialidades</a>
-        <a href="#tratamientos" class="tab" onclick="showTab('tratamientos')">Tratamientos</a>
-        <a href="#contacto" class="tab" onclick="showTab('contacto')">Contacto</a>
-    </div>
+    <!-- Navegación -->
+    <nav class="nav">
+        <ul class="nav-list">
+            <li><a href="#inicio" class="nav-link">Inicio</a></li>
+            <li><a href="#servicios" class="nav-link">Servicios</a></li>
+            <li><a href="#tratamientos" class="nav-link">Tratamientos</a></li>
+            <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
+            <li><a href="#contacto" class="nav-link">Contacto</a></li>
+        </ul>
+    </nav>
 
-    <!-- Pestaña INICIO -->
-    <div id="inicio" class="tab-content active">
-        <div class="quote-card">
-            "La recuperación es un camino de valentía, no de perfección"
-        </div>
-
-        <div class="card">
-            <div class="card-title">📞 EMERGENCIAS 24/7</div>
+    <!-- Contenido principal -->
+    <main class="main">
+        <!-- Sección Inicio -->
+        <section id="inicio" class="section fade-in">
+            <h2 class="section-title">Bienvenido a EN PLENITUD</h2>
+            <p>Somos un centro especializado en el tratamiento y rehabilitación de adicciones, ofreciendo un enfoque integral y personalizado para la recuperación. Nuestro equipo multidisciplinario está comprometido con brindar la mejor atención a nuestros pacientes y sus familias.</p>
             
-            <a href="tel:2721384183" class="button">
-                📞 Llamar: 272-138-4183
-            </a>
+            <div class="contact-buttons" style="margin-top: 2rem;">
+                <a href="tel:2721384183" class="btn btn-phone">📞 Llamar: 272-138-4183</a>
+                <a href="tel:2285125647" class="btn btn-phone">📞 Llamar: 228-512-5647</a>
+                <a href="https://wa.me/522721384183" class="btn btn-whatsapp">💬 WhatsApp</a>
+            </div>
+        </section>
 
-            <a href="tel:2285125647" class="button">
-                📞 Llamar: 228-512-5647
-            </a>
-
-            <a href="https://wa.me/522721384183" class="button whatsapp">
-                💬 WhatsApp: 272-138-4183
-            </a>
-        </div>
-
-        <div class="card">
-            <div class="card-title">📍 UBICACIÓN</div>
-            <div class="address">Privada Piedad Perez Ortiz #4, Colonia Ejidal</div>
-            <div class="address">Mariano Escobedo, Orizaba, Veracruz</div>
-            <div class="motto">"Expertos en tratamiento especializado de adicciones"</div>
-        </div>
-    </div>
-
-    <!-- Pestaña ESPECIALIDADES -->
-    <div id="especialidades" class="tab-content">
-        <div class="card">
-            <div class="card-title">🎯 NUESTRAS ESPECIALIDADES</div>
-            <div class="list-item">✅ Alcoholismo</div>
-            <div class="list-item">✅ Drogodependencia</div>
-            <div class="list-item">✅ Adicción a Sustancias</div>
-            <div class="list-item">✅ Trastornos Duales</div>
-            <div class="list-item">✅ Adicciones Conductuales</div>
-            <div class="list-item">✅ Intervención en Crisis</div>
-            <div class="list-item">✅ Rehabilitación Integral</div>
-            <div class="list-item">✅ Reinserción Social</div>
-        </div>
-    </div>
-
-    <!-- Pestaña TRATAMIENTOS -->
-    <div id="tratamientos" class="tab-content">
-        <div class="card">
-            <div class="card-title">🏥 TRATAMIENTOS ESPECIALIZADOS</div>
-            <div class="list-item">🩺 Evaluación Médica Integral</div>
-            <div class="list-item">🧠 Terapia Psicológica Individual</div>
-            <div class="list-item">👥 Terapia Grupal Especializada</div>
-            <div class="list-item">💊 Manejo Farmacológico</div>
-            <div class="list-item">🌿 Medicina Integrativa</div>
-            <div class="list-item">🏋️ Terapia Ocupacional</div>
-            <div class="list-item">👨‍👩‍👧‍👦 Terapia Familiar Sistémica</div>
-            <div class="list-item">📋 Plan Personalizado de Recuperación</div>
-        </div>
-    </div>
-
-    <!-- Pestaña CONTACTO -->
-    <div id="contacto" class="tab-content">
-        <div class="card">
-            <div class="card-title">📞 CONTACTO INMEDIATO</div>
+        <!-- Sección Servicios -->
+        <section id="servicios" class="section fade-in">
+            <h2 class="section-title">Nuestros Servicios</h2>
+            <p>Ofrecemos una amplia gama de servicios especializados para la recuperación integral:</p>
             
-            <a href="tel:2721384183" class="button">
-                📞 Llamada Urgente: 272-138-4183
-            </a>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🏠</div>
+                    <h3 class="service-title">Internamiento Residencial</h3>
+                    <p>Ambiente controlado y seguro para la recuperación las 24 horas del día.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🧠</div>
+                    <h3 class="service-title">Terapia Psicológica</h3>
+                    <p>Sesiones individuales y grupales con psicólogos especializados en adicciones.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">👨‍👩‍👧‍👦</div>
+                    <h3 class="service-title">Acompañamiento Familiar</h3>
+                    <p>Apoyo y orientación para familiares durante el proceso de recuperación.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🔄</div>
+                    <h3 class="service-title">Programa de 12 Pasos</h3>
+                    <p>Metodología probada para la recuperación a largo plazo.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">💼</div>
+                    <h3 class="service-title">Reinserción Social</h3>
+                    <p>Preparación para el regreso a la vida familiar, laboral y social.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">📋</div>
+                    <h3 class="service-title">Seguimiento Post-Tratamiento</h3>
+                    <p>Acompañamiento continuo después del alta para prevenir recaídas.</p>
+                </div>
+            </div>
+        </section>
 
-            <a href="tel:2285125647" class="button">
-                📞 Consultas: 228-512-5647
-            </a>
-
-            <a href="https://wa.me/522721384183" class="button whatsapp">
-                💬 WhatsApp Urgente: 272-138-4183
-            </a>
+        <!-- Sección Tratamientos -->
+        <section id="tratamientos" class="section fade-in">
+            <h2 class="section-title">Nuestros Tratamientos</h2>
+            <p>Desarrollamos planes de tratamiento personalizados según las necesidades de cada paciente:</p>
             
-            <div style="text-align: center; margin-top: 15px; color: #6b7280; font-size: 14px;">
-                Atención 24 horas los 7 días de la semana
+            <ul style="list-style-position: inside; margin: 1.5rem 0; padding-left: 1rem;">
+                <li style="margin-bottom: 0.8rem;">✅ Tratamiento para alcoholismo</li>
+                <li style="margin-bottom: 0.8rem;">✅ Rehabilitación de drogodependencia</li>
+                <li style="margin-bottom: 0.8rem;">✅ Manejo de adicciones conductuales</li>
+                <li style="margin-bottom: 0.8rem;">✅ Tratamiento de trastornos duales</li>
+                <li style="margin-bottom: 0.8rem;">✅ Programas de desintoxicación</li>
+                <li style="margin-bottom: 0.8rem;">✅ Terapia ocupacional y recreativa</li>
+            </ul>
+        </section>
+
+        <!-- Sección Contacto de Emergencia -->
+        <section id="contacto" class="emergency-contact fade-in">
+            <h2 class="emergency-title">Contacto de Emergencia 24/7</h2>
+            <p>Si necesitas ayuda inmediata, no dudes en contactarnos en cualquier momento:</p>
+            
+            <div class="contact-buttons">
+                <a href="tel:2721384183" class="btn btn-phone">📞 Llamada Urgente: 272-138-4183</a>
+                <a href="https://wa.me/522721384183" class="btn btn-whatsapp">💬 WhatsApp Urgente</a>
+                <a href="#ubicacion" class="btn btn-location">📍 Ver Ubicación</a>
+            </div>
+        </section>
+
+        <!-- Sección Ubicación -->
+        <section id="ubicacion" class="section fade-in">
+            <h2 class="section-title">Nuestra Ubicación</h2>
+            <p>Estamos ubicados en un entorno tranquilo y seguro para facilitar la recuperación:</p>
+            
+            <div style="margin-top: 1.5rem; padding: 1.5rem; background: #f0f7ff; border-radius: 8px;">
+                <p style="margin-bottom: 0.5rem;"><strong>📍 Dirección:</strong> Privada Piedad Perez Ortiz #4, Colonia Ejidal</p>
+                <p style="margin-bottom: 0.5rem;"><strong>🏙️ Municipio:</strong> Mariano Escobedo, Orizaba, Veracruz</p>
+                <p style="margin-bottom: 0.5rem;"><strong>📞 Teléfonos:</strong> 272-138-4183 / 228-512-5647</p>
+                <p><strong>🕒 Horario:</strong> Abierto las 24 horas, los 7 días de la semana</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>EN PLENITUD</h3>
+                <p>Centro de Rehabilitación Especializado en el tratamiento de adicciones con más de 10 años de experiencia.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p>📞 272-138-4183</p>
+                <p>📞 228-512-5647</p>
+                <p>💬 WhatsApp: 272-138-4183</p>
+                <p>📧 info@enplenitud.com</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Enlaces Rápidos</h3>
+                <a href="#inicio">Inicio</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#tratamientos">Tratamientos</a>
+                <a href="#contacto">Contacto de Emergencia</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Ubicación</h3>
+                <p>Privada Piedad Perez Ortiz #4</p>
+                <p>Colonia Ejidal</p>
+                <p>Mariano Escobedo, Orizaba, Ver.</p>
             </div>
         </div>
-
-        <div class="card">
-            <div class="card-title">🏥 CENTRO ESPECIALIZADO</div>
-            <div class="address">En Plenitud - Especialistas en Adicciones</div>
-            <div class="address">Privada Piedad Perez Ortiz #4</div>
-            <div class="address">Colonia Ejidal, Mariano Escobedo</div>
-            <div class="address">Orizaba, Veracruz, México</div>
-            <div class="motto">"Tu recuperación es nuestra especialidad"</div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 EN PLENITUD - Centro de Rehabilitación. Todos los derechos reservados.</p>
+            <p style="margin-top: 0.5rem;">"Transformando vidas, restaurando esperanzas"</p>
         </div>
-    </div>
+    </footer>
 
     <script>
-        function showTab(tabName) {
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.classList.remove('active');
+        // Navegación suave
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetSection.offsetTop - 80,
+                    behavior: 'smooth'
+                });
             });
-            document.getElementById(tabName).classList.add('active');
-            
-            document.querySelectorAll('.tab').forEach(tab => {
-                tab.classList.remove('active');
+        });
+
+        // Animación de aparición al hacer scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
             });
-            event.target.classList.add('active');
-        }
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Mensaje de consola
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Sitio EN PLENITUD cargado correctamente');
+            console.log('Contacto de emergencia: 272-138-4183');
+        });
     </script>
 </body>
 </html>

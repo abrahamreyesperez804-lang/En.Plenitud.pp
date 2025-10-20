@@ -1,31 +1,483 @@
-{
-  "expo": {
-    "name": "EnPlenitudApp",
-    "slug": "enplenitud-app",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      },
-      "package": "com.tuenplenitud.app"
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    }
-  }
-}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EN PLENITUD - App Web</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f0f8ff;
+            color: #333;
+        }
+
+        /* NAVEGACIÓN POR PESTAÑAS */
+        .tab-container {
+            display: flex;
+            background: #1e40af;
+            overflow-x: auto;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .tab {
+            padding: 15px 20px;
+            color: white;
+            text-decoration: none;
+            white-space: nowrap;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .tab.active {
+            border-bottom-color: white;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .tab-content {
+            display: none;
+            padding: 80px 20px 20px 20px;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* LOGO PROFESIONAL */
+        .professional-logo {
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            padding: 30px 20px;
+            text-align: center;
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .logo-main-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .logo-subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+
+        .logo-tagline {
+            font-size: 14px;
+            opacity: 0.8;
+            font-style: italic;
+        }
+
+        /* TARJETAS Y BOTONES */
+        .card {
+            background: white;
+            margin: 15px 0;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #1e40af;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .button {
+            background: #2563eb;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 10px;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            display: block;
+            border: none;
+            width: 100%;
+            font-size: 16px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .whatsapp {
+            background: #22c55e;
+        }
+
+        .phone {
+            background: #3b82f6;
+        }
+
+        /* LISTA DE INTERNOS */
+        .interno-card {
+            background: white;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #1e40af;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .interno-card:hover {
+            transform: translateX(5px);
+            background: #f8faff;
+        }
+
+        .interno-nombre {
+            font-weight: bold;
+            color: #1e40af;
+            margin-bottom: 5px;
+        }
+
+        .interno-ingreso {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* SISTEMA DE LOGIN */
+        .login-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .login-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #1e40af;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .login-input {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .password-container {
+            position: relative;
+        }
+
+        .eye-button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .error-text {
+            color: #dc2626;
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .tab {
+                padding: 12px 15px;
+                font-size: 14px;
+            }
+            
+            .professional-logo {
+                padding: 20px 15px;
+            }
+            
+            .logo-main-title {
+                font-size: 24px;
+            }
+        }
+
+        /* ANIMACIONES */
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .concepto-card {
+            background: white;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .concepto-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .concepto-icono {
+            font-size: 24px;
+        }
+
+        .concepto-titulo {
+            font-weight: bold;
+            color: #1e40af;
+            margin-bottom: 5px;
+        }
+
+        .concepto-descripcion {
+            color: #666;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVEGACIÓN POR PESTAÑAS -->
+    <div class="tab-container">
+        <a href="#inicio" class="tab active" onclick="showTab('inicio')">🏠 Inicio</a>
+        <a href="#metodo" class="tab" onclick="showTab('metodo')">🏛️ Método</a>
+        <a href="#internamiento" class="tab" onclick="showTab('internamiento')">🛌 Internamiento</a>
+        <a href="#familias" class="tab" onclick="showTab('familias')">👨‍👩‍👧‍👦 Familias</a>
+        <a href="#testimonios" class="tab" onclick="showTab('testimonios')">💬 Testimonios</a>
+    </div>
+
+    <!-- PESTAÑA INICIO -->
+    <div id="inicio" class="tab-content active">
+        <div class="professional-logo">
+            <div class="logo-main-title">EN PLENITUD</div>
+            <div class="logo-subtitle">CENTRO DE REHABILITACIÓN A.C.</div>
+            <div class="logo-tagline">Restauración y Vida en Plenitud</div>
+        </div>
+
+        <div class="card" style="background: #3b82f6; color: white;">
+            <div style="text-align: center; font-weight: bold; font-size: 18px;">
+                "Lo que evades te controla... lo que enfrentas te libera"
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">📞 CONTACTO INMEDIATO</div>
+            <a href="tel:2721384183" class="button phone">📞 Llamar: 272-138-4183</a>
+            <a href="tel:2285125647" class="button phone">📞 Llamar: 228-512-5647</a>
+            <a href="https://wa.me/522721384183" class="button whatsapp">💬 WhatsApp: 272-138-4183</a>
+        </div>
+
+        <div class="card">
+            <div class="card-title">📍 UBICACIÓN</div>
+            <div style="text-align: center; color: #4b5563; line-height: 1.5;">
+                Privada Piedad Perez Ortiz #4, Colonia Ejidal<br>
+                Mariano Escobedo, Orizaba, Ver.
+            </div>
+            <div style="text-align: center; color: #6b7280; font-style: italic; margin-top: 10px;">
+                "El dolor es temporal, la transformación es para siempre"
+            </div>
+        </div>
+    </div>
+
+    <!-- PESTAÑA MÉTODO -->
+    <div id="metodo" class="tab-content">
+        <div class="card">
+            <div class="card-title">🏛️ MÉTODO EN PLENITUD</div>
+            <div style="margin-bottom: 15px;">
+                <strong>9 PILARES DE TRANSFORMACIÓN:</strong>
+            </div>
+            <div class="concepto-card">
+                <div class="concepto-header">
+                    <div class="concepto-icono">🧠</div>
+                    <div>
+                        <div class="concepto-titulo">Coaching Transformacional con PNL</div>
+                        <div class="concepto-descripcion">Reprogramación de patrones mentales mediante Programación Neurolingüística</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Agregar los otros 8 pilares aquí -->
+        </div>
+
+        <div class="card">
+            <div class="card-title">🌟 20 CONCEPTOS TRANSFORMADORES</div>
+            <div class="concepto-card">
+                <div class="concepto-header">
+                    <div class="concepto-icono">🎭</div>
+                    <div>
+                        <div class="concepto-titulo">1. El rol de víctima</div>
+                        <div class="concepto-descripcion">Dejas de culparte por tu pasado y eliges sanar desde la responsabilidad</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Agregar los otros 19 conceptos aquí -->
+        </div>
+    </div>
+
+    <!-- PESTAÑA FAMILIAS -->
+    <div id="familias" class="tab-content">
+        <div class="card">
+            <div class="card-title">👨‍👩‍👧‍👦 ÁREA PARA FAMILIAS</div>
+            <div style="text-align: center; margin-bottom: 20px; color: #4b5563;">
+                Acceso exclusivo para familiares de internos
+            </div>
+
+            <div id="login-section">
+                <div class="login-card">
+                    <div class="login-title">Iniciar Sesión</div>
+                    
+                    <input type="text" class="login-input" placeholder="Usuario" id="usuario">
+                    
+                    <div class="password-container">
+                        <input type="password" class="login-input" placeholder="Contraseña" id="password">
+                        <button class="eye-button" onclick="togglePassword()">👁️</button>
+                    </div>
+                    
+                    <div id="error-message" class="error-text"></div>
+                    
+                    <button class="button" onclick="login()">Acceder al Área Familiar</button>
+                    
+                    <div style="text-align: center; margin-top: 15px; color: #6b7280; font-size: 14px;">
+                        Usuario demo: <strong>familia</strong><br>
+                        Contraseña demo: <strong>plenitud2024</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LISTA DE INTERNOS (se muestra después del login) -->
+            <div id="lista-internos" style="display: none;">
+                <div class="card">
+                    <div class="card-title">👥 TUS FAMILIARES EN EL CENTRO</div>
+                    
+                    <!-- LOS 20 INTERNOS REALES -->
+                    <div class="interno-card" onclick="accederPaciente('P-001')">
+                        <div class="interno-nombre">Gustavo Marcelo Páez</div>
+                        <div class="interno-ingreso">Ingreso: 06/Nov/2024</div>
+                    </div>
+                    
+                    <div class="interno-card" onclick="accederPaciente('P-002')">
+                        <div class="interno-nombre">Carlos Ernesto Marroquín Flores</div>
+                        <div class="interno-ingreso">Ingreso: 18/Feb/2025</div>
+                    </div>
+                    
+                    <!-- Agregar los otros 18 internos aquí -->
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DATOS DE LOS 20 INTERNOS
+        const INTERNOS_DATA = [
+            { id: 'P-001', nombre: 'Gustavo Marcelo Páez', ingreso: '06/Nov/2024' },
+            { id: 'P-002', nombre: 'Carlos Ernesto Marroquín Flores', ingreso: '18/Feb/2025' },
+            { id: 'P-003', nombre: 'Oscar Flores Pérez', ingreso: '22/Mar/2025' },
+            { id: 'P-004', nombre: 'Guillermo Alonso Robles', ingreso: '01/Abr/2025' },
+            { id: 'P-005', nombre: 'Genaro Cid Reyes', ingreso: '18/Abr/2025' },
+            { id: 'P-006', nombre: 'Albino Aguilar Jiménez', ingreso: '20/Abr/2025' },
+            { id: 'P-007', nombre: 'Armando Rivera Huerta', ingreso: '19/May/2025' },
+            { id: 'P-008', nombre: 'Gerardo Bernal Martínez', ingreso: '06/Jun/2025' },
+            { id: 'P-009', nombre: 'Ivan Ortiz Jiménez', ingreso: '06/Jun/2025' },
+            { id: 'P-010', nombre: 'Yahir De Jesús Martínez Vázquez', ingreso: '02/Jul/2025' },
+            { id: 'P-011', nombre: 'Jesús Everardo Song Contreras', ingreso: '10/Jul/2025' },
+            { id: 'P-012', nombre: 'Manuel Martínez Beristain', ingreso: '27/Jul/2025' },
+            { id: 'P-013', nombre: 'Luis Manuel De la Cruz Ventura', ingreso: '12/Ago/2025' },
+            { id: 'P-014', nombre: 'Isai Carrera Pérez', ingreso: '14/Ago/2025' },
+            { id: 'P-015', nombre: 'Luis Enrique Lozada Muñoz', ingreso: '19/Ago/2025' },
+            { id: 'P-016', nombre: 'Gabriel Yahir Olivares Herrera', ingreso: '20/Ago/2025' },
+            { id: 'P-017', nombre: 'Luis Rodrigo López Martínez', ingreso: '02/Sep/2025' },
+            { id: 'P-018', nombre: 'Esteban Herrera Vázquez', ingreso: '20/Sep/2025' },
+            { id: 'P-019', nombre: 'Juan Temoxtle Méndez', ingreso: '22/Sep/2025' },
+            { id: 'P-020', nombre: 'Alberto Hernández Salazar', ingreso: '05/Oct/2025' }
+        ];
+
+        // FUNCIONES DE NAVEGACIÓN
+        function showTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // SISTEMA DE LOGIN MEJORADO
+        let loginAttempts = 0;
+        let isBlocked = false;
+
+        function login() {
+            if (isBlocked) {
+                showError('Demasiados intentos. Espere 5 minutos.');
+                return;
+            }
+
+            const usuario = document.getElementById('usuario').value;
+            const password = document.getElementById('password').value;
+
+            if (usuario === 'familia' && password === 'plenitud2024') {
+                document.getElementById('error-message').textContent = '';
+                document.getElementById('login-section').style.display = 'none';
+                document.getElementById('lista-internos').style.display = 'block';
+                loginAttempts = 0;
+            } else {
+                loginAttempts++;
+                if (loginAttempts >= 3) {
+                    isBlocked = true;
+                    setTimeout(() => isBlocked = false, 300000);
+                    showError('Demasiados intentos. Cuenta bloqueada por 5 minutos.');
+                } else {
+                    showError(`Usuario o contraseña incorrectos. Intentos: ${loginAttempts}/3`);
+                }
+            }
+        }
+
+        function showError(message) {
+            document.getElementById('error-message').textContent = message;
+        }
+
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+        }
+
+        function accederPaciente(idPaciente) {
+            const paciente = INTERNOS_DATA.find(p => p.id === idPaciente);
+            if (paciente) {
+                alert(`Accediendo a información de: ${paciente.nombre}\n\nEsta funcionalidad está en desarrollo.`);
+                // Aquí iría la navegación a la pantalla de información específica
+            }
+        }
+
+        // INICIALIZACIÓN
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('App Web EN PLENITUD cargada correctamente');
+        });
+    </script>
+</body>
+</html>
